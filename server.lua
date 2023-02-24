@@ -63,9 +63,12 @@ end, false)
 RegisterNetEvent('byk3_save:server:load')
 AddEventHandler('byk3_save:server:load', function()
     local xPlayer = ESX.GetPlayerFromId(source)
+    if not xPlayer then return end
     local identifier = xPlayer.identifier
+    if not pedtable[identifier] then return end
     local pedModel = pedtable[identifier].model
     local pedName = pedtable[identifier].name
+
 
     if pedModel ~= nil then
         SetPlayerModel(source, pedModel)
